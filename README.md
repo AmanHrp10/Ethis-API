@@ -7,3 +7,7 @@
 2. **Create Auth Controller**
 
     - Using Passport as Auth Token
+
+3. **Create Post Controller**
+
+    - create method getAll posts & add post
