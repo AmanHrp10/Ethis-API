@@ -1,0 +1,24 @@
+.dropdown-toggle:after{
+    display: none;
+}
+
+.notif .badge{
+    position: absolute;
+    background: red;
+    border-radius: 50%;
+    margin-left: -7px;
+    margin-top: -7px;
+    color: #fff;
+}
+
+.dropdown-menu{
+    position: static;
+    display: block;
+    top: 0;
+}
+
+.mediaNone{
+    display: flex;
+    justify-content: center;
+}
+

@@ -34,7 +34,7 @@ Route::group(['prefix' => 'v1'], function () {
     Route::group([
         'middleware' => 'auth:api'
     ], function () {
-        Route::get('posts', [PostController::class, 'index']);
-        Route::post('post', [PostController::class, 'create']);
     });
+    Route::post('post', [PostController::class, 'create']);
+    Route::get('posts', [PostController::class, 'index']);
 });

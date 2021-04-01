@@ -14,13 +14,15 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
+
+        dd($request);
         $validate = Validator::make($request->all(), [
             'email' => 'required|email',
             'password' => 'required',
             'remember_me' => 'boolean'
         ]);
 
-        //* Check validate
+        // //* Check validate
 
         if ($validate->fails()) {
             $res['status'] = 'failed';

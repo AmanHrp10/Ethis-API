@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SendMail;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
@@ -39,6 +42,7 @@ class PostController extends Controller
             return response($res);
         }
 
+
         $post = new Post;
         $post->users_id = Auth::user()->id;
         $post->title = $request->title;
@@ -62,6 +66,22 @@ class PostController extends Controller
         //* Save Post
         $post->image = $path . $fileName;
         $post->save();
+
+        $users = User::all();
+
+        $data = [
+            'title' => 'New Post',
+            'userName' => 'Amanudin',
+            'url' => ''
+        ];
+        foreach ($users as $user) {
+            if ($user->email != Auth::user()->email) {
+                Mail::to($user->email)->send(new SendMail(['title' => 'New Post', 'userName' => Auth::user()->name, 'url' => 'http://localhost:8000']));
+            }
+        };
+
+
+        event(new \App\Events\PostNotification(Auth::user()->name, $post->image));
 
         //* Response
         $newPost = Post::whereId($post->id)->with('user')->first();

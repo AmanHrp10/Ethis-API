@@ -11,3 +11,16 @@
 3. **Create Post Controller**
 
     - create method getAll posts & add post
+
+4. **Create Sending Notification via Email**
+
+    - Set Email driver with mailtrap.io
+    - design UI using blade (Laravel)
+
+5. **Create sending Notification real-time**
+
+    - Using library Pusher
+
+6. **Integration Api to client**
+
+    - fetch data using ajax
